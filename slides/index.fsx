@@ -2,7 +2,7 @@
 - title : Introduction to F# 
 - description : Introduction to F#
 - author : Tomasz Heimowski
-- theme : white
+- theme : night
 - transition : default
 
 ***
@@ -32,7 +32,22 @@ http://theimowski.com/
 ## Brief history
 
 * Microsoft Research initiative
-* Biggest influencers
+* Influencing languages
+
+---
+
+### Microsoft Research initiative
+
+---
+
+### Influencing languages
+
+* OCaml - syntax
+* Haskell - functional
+* C# - .NET interop
+* **Scala** - FP on OOP platform
+* Python - whitespace
+* Erlang - actor model
 
 ***
 
@@ -41,13 +56,13 @@ http://theimowski.com/
 * Semantics, Syntax
 * Main assumptions
 
-
 ***
 
 ## Greatest features
 
 * Type inference
 * Type providers
+* One-pass compiler
 * Miscellaneous (Active patterns, UOM)
 
 ***
