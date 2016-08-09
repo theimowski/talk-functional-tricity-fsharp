@@ -3,3 +3,7 @@ img[src="images/ihsmarkit.svg"] {
   box-shadow: none !important;
   width: 30% !important;
 }
+
+img[src="images/fs_vs_sc.png"] {
+  width: 40% !important;
+}
