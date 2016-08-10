@@ -1,7 +1,20 @@
 img[src="images/ihsmarkit.svg"] {
   border: none !important;
   box-shadow: none !important;
-  width: 30% !important;
+  width: 25% !important;
+}
+
+img[src="images/fsharp256.png"] {
+  border: none !important;
+  box-shadow: none !important;
+  width: 20% !important;
+}
+
+img[src="images/fsharp.png"], img[src="images/scala.png"] {
+  border: none !important;
+  box-shadow: none !important;
+  width: 32px !important;
+  margin: 0px !important;
 }
 
 img[src="images/fs_vs_sc.png"] {

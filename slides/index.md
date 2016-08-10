@@ -6,6 +6,8 @@
 
 ***
 
+![fsharp256.png](images/fsharp256.png)
+
 ## Introduction to F#
 
 ### Tomasz Heimowski
@@ -21,7 +23,7 @@ http://theimowski.com/
 ## Agenda
 
 1. Brief history
-2. Comparison with Scala
+2. Basics - comparison with Scala
 3. Greatest features
 4. Evolution of the language
 5. Using F# at work
@@ -55,10 +57,11 @@ http://theimowski.com/
 
 ***
 
-## Comparison with Scala
+## Basics - comparison with Scala
 
-* Main assumptions
-* Semantics, Syntax
+* General assumptions
+* Semantics
+* Syntax
 
 ![fs_vs_sc.png](images/fs_vs_sc.png)
 
@@ -69,7 +72,7 @@ http://theimowski.com/
 
 ---
 
-### Similarities
+### General similarities
 ### Both F# and Scala:
 
 * Introduce FP to an OOP platform (.NET and JVM respectively),
@@ -80,14 +83,74 @@ http://theimowski.com/
 
 ---
 
-### Differences
+### General differences
 
-|                     | F#                  | Scala               |
+|                     | ![fsharp](images/fsharp.png)                  | ![scala](images/scala.png)               |
 | :------------------ | :-----------------: | :-----------------: |
 | **Paradigm**        | Functional-first    | Both OOP and FP     |
-| **Functional stuff**| Baked into platform | On compiler level   |
+| **Functional bits** | Baked into platform | On compiler level   |
 | **Syntax**          | Strict, concise     | Loose, verbose      |
 | **Scopes**          | Whitespace sensitive| Curly braces        |
+
+---
+
+### Mutable and immutable bindings
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let x = 28         // immutable
+    let mutable y = 29 // mutable
+    y <- 28            // mutation
+    let z = x = y      // equality test
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    val x = 28         // immutable
+    var y = 29         // mutable
+    y = 28             // mutation
+    val z = x == y     // equality test
+
+---
+
+### Nulls?
+
+---
+
+### Functions
+
+---
+
+### Discriminated unions (ADT sum types)
+
+---
+
+### Tuples and Records (ADT product types)
+
+---
+
+### Pattern matching
+
+---
+
+### Classes?
+
+---
+
+### Pipes
+
+---
+
+### Generics, HKT?
+
+---
+
+### Computation Expressions
+
+---
+
+### Summary
 
 ***
 
@@ -102,8 +165,11 @@ http://theimowski.com/
 
 ## Evolution of the language
 
+* Commercial use
 * Community-driven
 * X-Plat support
+* Known projects
+* FsReveal meta
 
 ***
 
