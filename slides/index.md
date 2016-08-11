@@ -24,7 +24,7 @@ http://theimowski.com/
 
 1. Brief history
 2. Basics - comparison with Scala
-3. Greatest features
+3. Outstanding F# features
 4. Evolution of the language
 5. Using F# at work
 
@@ -85,7 +85,7 @@ http://theimowski.com/
 
 ### General differences
 
-|                     | ![fsharp](images/fsharp.png)                  | ![scala](images/scala.png)               |
+|                     | F#                  | Scala               |
 | :------------------ | :-----------------: | :-----------------: |
 | **Paradigm**        | Functional-first    | Both OOP and FP     |
 | **Functional bits** | Baked into platform | On compiler level   |
@@ -132,6 +132,8 @@ http://theimowski.com/
 
 ### Pattern matching
 
+//active patterns
+
 ---
 
 ### Classes?
@@ -154,21 +156,134 @@ http://theimowski.com/
 
 ***
 
-## Greatest features
+## Outstanding F# features
 
-* Type inference
 * Type providers
+* Type inference
 * One-pass compiler
-* Miscellaneous (Active patterns, UOM)
+* Units of measure
+
+---
+
+### Type providers
+
+// TODO: explain type providers
+
+---
+
+#### JSON Type Provider
+#### Open Weather API
+
+http://openweathermap.org/api
+
+![type-provider-json.gif](images/type-provider-json.gif)
+
+---
+
+#### CSV Type Provider
+#### Yahoo Finance Stocks
+
+![type-provider-csv.gif](images/type-provider-csv.gif)
+
+---
+
+#### World Bank Type Provider
+
+http://data.worldbank.org/
+
+![type-provider-wb.gif](images/type-provider-wb.gif)
+
+---
+
+#### And many more!
+
+* F# Data library: CSV, HTML, JSON, XML, World Bank
+* F# Management library: FileSystem, Registry, WMI, Powershell, SystemTimeZones
+* F# Configuration library: AppSettings, Resources, Yaml, *.ini
+* SQL Clients, R language
+* Apiary, Freebase, Excel, Graph, Math, Xaml, CRM, DbPedia
+* Twitter, RSS, NuGet, DGML, DataStore, Hadoop/Hive/Hdfs, MiniCvs, COM
+* FunScript, Matlab, IKVM, Python, Azure, S3, Neo4j, Swagger
+* ...
+
+More on type providers [in this presentation](http://sergey-tihon.github.io/Talks/typeproviders)
+
+---
+
+### Type inference
+
+Hindley-Milner type system
+
+---
+
+### One-pass compiler
+
+---
+
+### Units of measure
+
+    [lang=fsharp]
+    [<Measure>] type km           // Define the measure units
+    [<Measure>] type mi           // as simple types decorated
+    [<Measure>] type h            // with Measure attribute
+
+    let speedKmh = 90<km> / 1<h>  // Can be combined through
+    let speedMph = 55<mi> / 1<h>  // arithmetic operations
+
+    let v1, v2, v3 = 3.1<km/h>, 2.7<km/h>, 1.5<mi/h>
+    let sum = v1 + v2
+    //let sum' = v1 + v3          // Error: doesn't compile
+
+    // Can be used in a generic way
+    type Vector3D<[<Measure>] 'u> =
+        { x: float<'u>; y: float<'u>; z: float<'u> }
+
+Units of measure is a compile-time only feature
+
+***
+
+## What's missing???
+
+* HKT
+* Macros
 
 ***
 
 ## Evolution of the language
 
-* Commercial use
+* F# Software Foundation
 * Community-driven
 * X-Plat support
+* Commercial use
 * Known projects
+
+---
+
+### F# Software Foundation
+
+http://fsharp.org/
+
+> The mission of the F# Software Foundation is to promote,
+> protect, and advance the F# programming language, 
+> and to support and facilitate the growth of a diverse 
+> and international community of F# programmers.
+
+---
+
+### Community-driven
+
+---
+
+### X-Plat support
+
+---
+
+### Commercial use
+
+---
+
+### Known projects
+
 * FsReveal meta
 
 ***
