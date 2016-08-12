@@ -1,7 +1,7 @@
 ﻿- title : Introduction to F# 
 - description : Introduction to F#
 - author : Tomasz Heimowski
-- theme : night
+- theme : white
 - transition : default
 
 ***
@@ -261,6 +261,8 @@ Units of measure is a compile-time only feature
 
 ### F# Software Foundation
 
+![fsharp.org.png](images/fsharp.org.png)
+
 http://fsharp.org/
 
 > The mission of the F# Software Foundation is to promote,
@@ -279,6 +281,43 @@ http://fsharp.org/
 ---
 
 ### Commercial use
+
+http://fsharp.org/testimonials/
+
+<div>
+    <img class="use" style="display: inline-block;vertical-align:middle" src="images/use-microsoft.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:50px" src="images/use-jet.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle" src="images/use-tachyus.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle" src="images/use-credit_suisse.png" />
+</div>
+
+
+<div>
+    <img class="use" style="display: inline-block;vertical-align:middle;height:35px" src="images/use-handelsbanken.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:40px" src="images/use-prolucid.jpg" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:55px" src="images/use-greeneagle.png" />
+</div>
+
+<div>
+    <img class="use" style="display: inline-block;vertical-align:middle;height:40px" src="images/use-kaggle.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:60px" src="images/use-grange.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:60px" src="images/use-gamesys.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:50px" src="images/use-15below.png" />
+    <img class="use" style="display: inline-block;vertical-align:middle;height:65px" src="images/use-readify.png" />
+</div>
+
+<div>
+    <img class="use" style="display: inline-block;vertical-align:middle;height:35px" src="images/use-waagnerbiro.png" />    
+    <img class="use" style="display: inline-block;vertical-align:middle;height:65px" src="images/ihsmarkit.svg" />    
+</div>
+
+---
+
+### Commercial use
+
+![walmart.png](images/walmart.png)
+
+<img style="height:350px" src="images/twitter_for_scala.png" />
 
 ---
 

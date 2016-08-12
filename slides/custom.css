@@ -20,3 +20,9 @@ img[src="images/fsharp.png"], img[src="images/scala.png"] {
 img[src="images/fs_vs_sc.png"] {
   width: 40% !important;
 }
+
+img[class="use"] {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 10px !important;  
+}
