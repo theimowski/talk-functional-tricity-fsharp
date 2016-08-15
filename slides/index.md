@@ -35,6 +35,12 @@ http://theimowski.com/
 * Origins
 * Influencing languages
 
+<div style="">
+    <img class="use" style="display: inline-block;vertical-align:middle;height:150px" src="images/fsharp_old.png" />
+    <span style="font-size:64px">===></span>    
+    <img class="use" style="display: inline-block;vertical-align:middle;height:180px;width:50px" src="images/fsharp256.png" />    
+</div>
+
 ---
 
 ### Origins
@@ -75,7 +81,7 @@ http://theimowski.com/
 ### General similarities
 ### Both F# and Scala:
 
-* Introduce FP to an OOP platform (.NET and JVM respectively),
+* Introduce FP to an OOP platform (.NET and JVM),
 * Enable interoperability with the existing ecosystem,
 * Fall into the category of non-purely functional languages,
 * Provide static typing with type inference,
@@ -88,9 +94,11 @@ http://theimowski.com/
 |                     | F#                  | Scala               |
 | :------------------ | :-----------------: | :-----------------: |
 | **Paradigm**        | Functional-first    | Both OOP and FP     |
-| **Functional bits** | Baked into platform | On compiler level   |
+| **FP features\***   | Native to platform  | Compiler level      |
 | **Syntax**          | Strict, concise     | Loose, verbose      |
 | **Scopes**          | Whitespace sensitive| Curly braces        |
+
+\* Functional features such as [generics](http://stackoverflow.com/a/31929/1397724) or tail recursion
 
 ---
 
@@ -204,9 +212,7 @@ http://data.worldbank.org/
 * Apiary, Freebase, Excel, Graph, Math, Xaml, CRM, DbPedia
 * Twitter, RSS, NuGet, DGML, DataStore, Hadoop/Hive/Hdfs, MiniCvs, COM
 * FunScript, Matlab, IKVM, Python, Azure, S3, Neo4j, Swagger
-* ...
-
-More on type providers [in this presentation](http://sergey-tihon.github.io/Talks/typeproviders)
+* More on type providers [in this presentation](http://sergey-tihon.github.io/Talks/typeproviders)
 
 ---
 
@@ -315,9 +321,11 @@ http://fsharp.org/testimonials/
 
 ### Commercial use
 
-![walmart.png](images/walmart.png)
-
 <img style="height:350px" src="images/twitter_for_scala.png" />
+
+<img style="height:150px" src="images/walmart.png" />
+
+
 
 ---
 
@@ -327,7 +335,7 @@ http://fsharp.org/testimonials/
 
 ***
 
-## Using F# at work
+## Using F# at work ???
 
 * Safe ways for introducing new language
 * Practical example

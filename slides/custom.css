@@ -4,7 +4,7 @@ img[src="images/ihsmarkit.svg"] {
   width: 25% !important;
 }
 
-img[src="images/fsharp256.png"] {
+img[src="images/fsharp256.png"], img[src="images/fsharp.org.png"] {
   border: none !important;
   box-shadow: none !important;
   width: 20% !important;
