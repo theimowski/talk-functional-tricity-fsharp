@@ -98,7 +98,7 @@ http://theimowski.com/
 | **Syntax**          | Strict, concise     | Loose, verbose      |
 | **Scopes**          | Whitespace sensitive| Curly braces        |
 
-\* Functional features such as [generics](http://stackoverflow.com/a/31929/1397724) or tail recursion
+\* Functional features such as [generics](http://stackoverflow.com/a/31929/1397724) or [tail calls](https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/)
 
 ---
 
@@ -122,11 +122,45 @@ http://theimowski.com/
 
 ---
 
-### Nulls?
+### Nulls
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let x : Option<string> = None // must use option type
+    //let y : string = null       // compile error
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    val x: Option[String] = None  // can use option type
+    val y: String = null          // but can also use null
+
+---
+
+### Type inference?
 
 ---
 
 ### Functions
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let add x y = x + y
+    let z = add 10 4                    // function application
+    let add5 = add 5                    // curried by default
+
+    let lambda = fun x -> x * 2         // explicit arguments
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    def add (x:Int, y:Int) = x + y
+    val z = add(10,4)                   // function application
+    val add5: (Int) => Int = add(5,_)   // underscore for currying
+
+    val lambda: Function[Int,Int] = _*2 // implicit arguments
 
 ---
 
