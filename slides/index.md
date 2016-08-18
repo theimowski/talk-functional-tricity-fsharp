@@ -69,8 +69,6 @@ http://theimowski.com/
 * Semantics
 * Syntax
 
-![fs_vs_sc.png](images/fs_vs_sc.png)
-
 ---
 
 * [F# for Scala developers](https://alfonsogarciacaro.github.io/fsharp-for-scala-developers) by Alfonso Garcia-Caro
@@ -138,10 +136,6 @@ http://theimowski.com/
 
 ---
 
-### Type inference?
-
----
-
 ### Functions
 
 ![fsharp](images/fsharp.png)
@@ -164,11 +158,73 @@ http://theimowski.com/
 
 ---
 
-### Discriminated unions (ADT sum types)
+### Type inference
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let x = 28                             // int
+    let y = "hello"                        // string
+        
+    let add x y = x + y                    // generalization
+    let addF = fun x y -> x + y            // same with lambda
+    let doItTwice f = f >> f               // composed function
+
+==> [Hindley-Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system)
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    val x = 28                             // int
+    val y = "hello"                        // string
+        
+    def add (x:Int, y:Int) = x + y         // explicit types
+    val addF: Function[Int,Int,Int] = _+_  // lambda
 
 ---
 
-### Tuples and Records (ADT product types)
+### Discriminated unions (ADT sum types)
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    type Shape =
+    | Rectangle of width: float * height: float
+    | Circle of radius: float
+
+    let area = function
+    | Rectangle (width, height) -> width * height
+    | Circle radius -> System.Math.PI * (radius ** 2.0)
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    sealed abstract class Shape
+    case class Rectangle(width: Float, height: Float) extends Shape
+    case class Circle(radius: Float) extends Shape
+
+    def area(shape: Shape): Double = shape match {
+      case Rectangle(width, height) => width * height
+      case Circle(radius) => Math.Pi * radius * radius
+    }
+
+---
+
+### Tuples & Records (ADT product types)
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let meetup = 3, "Functional Tricity"   // constructing
+    let (_,group) = meetup                 // pattern matching
+    let occurence = fst meetup             // extracting
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    val meetup = (3, "Functional Tricity") // constructing
+    val (_,group) = meetup                 // pattern matching
+    val occurence = meetup._1              // extracting
 
 ---
 
@@ -196,12 +252,13 @@ http://theimowski.com/
 
 ### Summary
 
+![fs_vs_sc.png](images/fs_vs_sc.png)
+
 ***
 
 ## Outstanding F# features
 
 * Type providers
-* Type inference
 * One-pass compiler
 * Units of measure
 
