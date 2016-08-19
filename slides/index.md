@@ -32,6 +32,7 @@ http://theimowski.com/
 
 ## Brief history
 
+* About
 * Origins
 * Influencing languages
 
@@ -40,6 +41,10 @@ http://theimowski.com/
     <span style="font-size:64px">===></span>    
     <img class="use" style="display: inline-block;vertical-align:middle;height:180px;width:50px" src="images/fsharp256.png" />    
 </div>
+
+---
+
+### About
 
 ---
 
@@ -210,7 +215,7 @@ http://theimowski.com/
 
 ---
 
-### Tuples & Records (ADT product types)
+### Tuples (ADT product types)
 
 ![fsharp](images/fsharp.png)
 
@@ -218,6 +223,8 @@ http://theimowski.com/
     let meetup = 3, "Functional Tricity"   // constructing
     let (_,group) = meetup                 // pattern matching
     let occurence = fst meetup             // extracting
+    let f (occurence, group) = ()
+    let _ = f meetup                       // as function params
 
 ![scala](images/scala.png)
 
@@ -228,13 +235,59 @@ http://theimowski.com/
 
 ---
 
-### Pattern matching
+### Records (Extended tuples)
 
-//active patterns
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    type Meetup = { Occurence : int; Group : string }
+    let meetup = { Occurence = 3; Group = "Functional Tricity" }
+    let { Group = group } = meetup
+    let occurence = meetup.Occurence
+    let next = { meetup with Occurence = 4 }
+    let equal = meetup = { Occurence = occurence; Group = group }
 
 ---
 
-### Classes?
+### Active patterns
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let (|Even|Odd|) n = if n % 2 = 0 then Even else Odd
+    let test = function Even -> "Even number" | Odd -> "Odd number"
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    object Even { def unapply(x: Int) = if (x % 2 == 0) Some(x) else None }
+    object Odd  { def unapply(x: Int) = if (x % 2 == 1) Some(x) else None }
+    def test(x: Int) =
+        x match { case Even(_) => "Even number" case Odd(_) => "Odd number" }
+
+---
+
+### Active patterns - partial & args
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let (|Integer|_|) (str: string) =
+        match System.Int32.TryParse str with
+        | (true, i) -> Some i | (false, _) -> None
+
+    open System.Text.RegularExpressions
+    let (|ParseRegex|_|) regex str =
+        match Regex.Match(str, regex) with
+        | m when not m.Success -> None
+        | m -> [for x in m.Groups -> x.Value] |> List.tail |> Some
+
+    let parseDate str =
+        match str with
+        | ParseRegex @"^(\d{1,2})/(\d{1,2})/(\d{1,2})$"
+                    [Integer m; Integer d; Integer y]
+            -> Some (System.DateTime(y + 2000, m, d))
+        | _ -> None
 
 ---
 
