@@ -321,9 +321,90 @@ http://fsharp.org/
 
 ### Generics
 
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp] 
+    let drop list = 
+        match list with
+        | head :: tail -> tail
+        | [] -> failwith "empty!"
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    def drop1[A](list: List[A]) = list match {
+        case head :: tail => tail
+        case _ => throw new Exception("empty!")
+    }
+    
 ---
 
-### , HKT? Computation Expressions
+### Computation Expressions
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    type MaybeBuilder() =
+        member __.Bind (m, f) = Option.bind f m
+        member __.Return v = Some v
+
+    let maybe = MaybeBuilder()
+
+    type Person = { Mother : Person option; Father : Person option }
+
+    let bothGrandfathers person =
+        maybe {
+            let! m  = person.Mother
+            let! fm = m.Father
+            let! f  = person.Father
+            let! ff = f.Father
+            return (fm, ff)
+        }
+
+---
+
+### Computation Expressions
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let purchase = 
+        async {
+            let! usd = usdQuote
+            let! chf = chfQuote
+            if isProfitable(usd, chf) then
+               buy (1000, chf)
+            else
+               return ()
+        }
+
+No Higher Kind Types!
+
+---
+
+### Scala comprehensions
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    def bothGrandfathers(p: Person): Maybe[(Person, Person)] =
+        for(
+            m <- p.mother;
+            fm <- m.father;
+            f <- p.father;
+            ff <- f.father)
+        yield (fm, ff)
+
+![scala](images/scala.png)
+
+    [lang=scala]
+    val usdQuote = Future { connection.getCurrentValue(USD) }
+    val chfQuote = Future { connection.getCurrentValue(CHF) }
+    val purchase = for {
+            usd <- usdQuote
+            chf <- chfQuote
+            if isProfitable(usd, chf)
+        } yield connection.buy(amount, chf)
 
 ---
 
@@ -446,7 +527,7 @@ Units of measure is a compile-time only feature
 * Community-driven
 * Cross platform support
 * Commercial use
-* Known projects
+* Projects
 
 ---
 
@@ -537,9 +618,17 @@ http://fsharp.org/testimonials/
 
 ---
 
-### Known projects
+### Projects
 
-* FsReveal meta
+* [FAKE](http://fsharp.github.io/FAKE/) - build automation system
+* [Paket](http://fsprojects.github.io/Paket/) - dependency manager for .NET
+* [F# Data](http://fsharp.github.io/FSharp.Data/) - type providers for best known file formats
+* [F# Power Tools](https://fsprojects.github.io/VisualFSharpPowerTools/) - Visual Studio editor extension
+* [Ionide](http://ionide.io/) - package suite for Atom and Visual Studio Code
+* [Suave.IO](https://suave.io/) - light-weight web server
+* [FsCheck](https://fscheck.github.io/FsCheck/) - library for property-based testing
+* [FParsec](http://www.quanttec.com/fparsec/) - parser combinator library
+* [FsReveal](http://fsprojects.github.io/FsReveal/) - slides in markdown / F# script
 
 ***
 
