@@ -10,7 +10,7 @@ img[src="images/fsharp256.png"], img[src="images/fsharp.org.png"] {
   width: 20% !important;
 }
 
-img[src="images/fsharp.png"], img[src="images/scala.png"] {
+img[src="images/fsharp.png"], img[src="images/scala.png"], img[src="images/haskell.png"] {
   border: none !important;
   box-shadow: none !important;
   width: 36px !important;
@@ -25,4 +25,13 @@ img[class="use"] {
   border: none !important;
   box-shadow: none !important;
   margin: 10px !important;  
+}
+
+table p {
+    font-size: 24px !important;
+    margin: 12px 0px !important;
+}
+
+img[src="images/f_com.png"] {
+    width: 50% !important;
 }

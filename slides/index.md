@@ -26,13 +26,12 @@ http://theimowski.com/
 2. Basics - comparison with Scala
 3. Outstanding F# features
 4. Evolution of the language
-5. Using F# at work
 
 ***
 
 ## Brief history
 
-* About
+* What is F#?
 * Origins
 * Influencing languages
 
@@ -44,7 +43,11 @@ http://theimowski.com/
 
 ---
 
-### About
+### What is F#?
+
+> F# is a **mature**, **open source**, **cross-platform**, **functional-first** programming language. It empowers users and organizations to tackle complex computing problems with **simple**, **maintainable** and **robust** code.
+
+http://fsharp.org/
 
 ---
 
@@ -70,7 +73,7 @@ http://theimowski.com/
 
 ## Basics - comparison with Scala
 
-* General assumptions
+* General premises
 * Semantics
 * Syntax
 
@@ -89,19 +92,6 @@ http://theimowski.com/
 * Fall into the category of non-purely functional languages,
 * Provide static typing with type inference,
 * Ship with a set of base libraries.
-
----
-
-### General differences
-
-|                     | F#                  | Scala               |
-| :------------------ | :-----------------: | :-----------------: |
-| **Paradigm**        | Functional-first    | Both OOP and FP     |
-| **FP features\***   | Native to platform  | Compiler level      |
-| **Syntax**          | Strict, concise     | Loose, verbose      |
-| **Scopes**          | Whitespace sensitive| Curly braces        |
-
-\* Functional features such as [generics](http://stackoverflow.com/a/31929/1397724) or [tail calls](https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/)
 
 ---
 
@@ -171,7 +161,7 @@ http://theimowski.com/
     let x = 28                             // int
     let y = "hello"                        // string
         
-    let add x y = x + y                    // generalization
+    let add x y = x + y                    // ins inferred
     let addF = fun x y -> x + y            // same with lambda
     let doItTwice f = f >> f               // composed function
 
@@ -247,6 +237,13 @@ http://theimowski.com/
     let next = { meetup with Occurence = 4 }
     let equal = meetup = { Occurence = occurence; Group = group }
 
+![haskell](images/haskell.png)
+
+    [lang=haskell]
+    data Meetup = Meetup { occurence :: Int, group :: String }
+    let meetup = Meetup 3 "Functional Tricity"
+    let g = group meetup
+
 ---
 
 ### Active patterns
@@ -255,15 +252,24 @@ http://theimowski.com/
 
     [lang=fsharp]
     let (|Even|Odd|) n = if n % 2 = 0 then Even else Odd
-    let test = function Even -> "Even number" | Odd -> "Odd number"
+
+    let test = function
+    | Even -> "Even number" 
+    | Odd -> "Odd number"
 
 ![scala](images/scala.png)
 
     [lang=scala]
-    object Even { def unapply(x: Int) = if (x % 2 == 0) Some(x) else None }
-    object Odd  { def unapply(x: Int) = if (x % 2 == 1) Some(x) else None }
+    object Even { 
+        def unapply(x: Int) = if (x % 2 == 0) Some(x) else None }
+    
+    object Odd  { 
+        def unapply(x: Int) = if (x % 2 == 1) Some(x) else None }
+    
     def test(x: Int) =
-        x match { case Even(_) => "Even number" case Odd(_) => "Odd number" }
+        x match { 
+            case Even(_) => "Even number" 
+            case Odd(_)  => "Odd number" }
 
 ---
 
@@ -293,17 +299,45 @@ http://theimowski.com/
 
 ### Pipes
 
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let x =
+        [2 .. 100]
+        |> List.filter (fun x -> x % 2 = 0)
+        |> List.map    (fun x -> x * x)
+        |> List.reduce (+) 
+
+![scala](images/scala.png)
+
+    val x = 
+        (1 to 100)
+        .toList
+        .filter(_ % 2 == 0)
+        .map(x => x * x)
+        .reduceLeft(_ + _)
+
 ---
 
-### Generics, HKT?
+### Generics
 
 ---
 
-### Computation Expressions
+### , HKT? Computation Expressions
 
 ---
 
 ### Summary
+
+|                     | F#                  | Scala               |
+| :------------------ | :-----------------: | :-----------------: |
+| **Paradigm**        | Functional-first    | Both OOP and FP     |
+| **FP features\***   | Native to platform  | Compiler level      |
+| **Syntax**          | Strict, concise     | Loose, verbose      |
+| **Scopes**          | Whitespace sensitive| Curly braces        |
+
+<small>
+* Functional features such as <a href=http://stackoverflow.com/a/31929/1397724">generics</a> or <a href="https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/">tail calls</a></small>
 
 ![fs_vs_sc.png](images/fs_vs_sc.png)
 
@@ -319,7 +353,11 @@ http://theimowski.com/
 
 ### Type providers
 
-// TODO: explain type providers
+* Given some kind of a schema,
+* Provide a fully-fledged type with members,
+* To easily consume data,
+* And enable IDE intellisense,
+* Without worrying about parsing at all.
 
 ---
 
@@ -360,13 +398,23 @@ http://data.worldbank.org/
 
 ---
 
-### Type inference
-
-Hindley-Milner type system
-
----
-
 ### One-pass compiler
+
+#### with top-down dependency order
+
+    [lang=fsharp]
+    module MyModule =
+        
+        let add x y = x + y
+
+        let x = add 5 3 // ok
+
+        // let y = sub 5 3 
+        // >> error FS0039: The value or constructor 'sub' is not defined
+
+        let sub x y = x - y
+
+[The "Dependency cycles" series](https://fsharpforfunandprofit.com/series/dependency-cycles.html) by Scott Wlaschin
 
 ---
 
@@ -392,18 +440,11 @@ Units of measure is a compile-time only feature
 
 ***
 
-## What's missing???
-
-* HKT
-* Macros
-
-***
-
 ## Evolution of the language
 
 * F# Software Foundation
 * Community-driven
-* X-Plat support
+* Cross platform support
 * Commercial use
 * Known projects
 
@@ -424,9 +465,32 @@ http://fsharp.org/
 
 ### Community-driven
 
+* Contribution to F# Core
+* OSS projects
+* Great people
+* Mutual support
+
+![f_com.png](images/f_com.png)
+
 ---
 
-### X-Plat support
+### Cross platform support
+
+http://fsharp.org/guides/mac-linux-cross-platform/
+
+<img src="images/xplat_guide.png" style="width:55%"/>
+
+http://ionide.io/
+
+<img src="images/xplat_ionide.png" style="width:55%"/>
+
+---
+
+### Cross platform support
+
+[F# Survey 2016](https://docs.google.com/forms/d/1l84WGQDUs0EJxVAFWj2jilA3WP0ArgyAqkSnv6Bcffo/viewanalytics)
+
+<img src="images/xplat_stat.png" style="width:60%"/>
 
 ---
 
@@ -476,13 +540,6 @@ http://fsharp.org/testimonials/
 ### Known projects
 
 * FsReveal meta
-
-***
-
-## Using F# at work ???
-
-* Safe ways for introducing new language
-* Practical example
 
 ***
 
