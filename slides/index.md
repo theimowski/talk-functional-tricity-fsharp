@@ -55,7 +55,8 @@ http://fsharp.org/
 
 * Born in 2005 (bundled with VS 2005), from Microsoft Research initiative
 * Development lead by Don Syme
-* Aimed to incorporate Functional Programming into .NET platform 
+* Aimed to incorporate Functional Programming into .NET platform
+* Door-to-door with Haskell (Simon Peyton Jones, Simon Marlow)
 * Originally closed source
 
 ---
@@ -66,7 +67,7 @@ http://fsharp.org/
 * Haskell - functional
 * C# - .NET interop
 * **Scala** - FP on OOP platform
-* Python - whitespace
+* Python - syntactic sugars
 * Erlang - actor model
 
 ***
@@ -81,6 +82,8 @@ http://fsharp.org/
 
 * [F# for Scala developers](https://alfonsogarciacaro.github.io/fsharp-for-scala-developers) by Alfonso Garcia-Caro
 * [Comparing Scala to F#](http://mikhail.io/2016/08/comparing-scala-to-fsharp/) by Mikhail Shilkov
+* [How does Scala compare to F# as a functional language?](https://www.quora.com/How-does-Scala-compare-to-F-as-a-functional-language) - Quora.com
+* [Is F# (F-Sharp) better than Scala? If so, why?](https://www.quora.com/Is-F-F-Sharp-better-than-Scala-If-so-why) - Quora.com
 
 ---
 
@@ -139,6 +142,7 @@ http://fsharp.org/
     let add x y = x + y
     let z = add 10 4                    // function application
     let add5 = add 5                    // curried by default
+    let add8toAll = List.map (add 8)    // curry without explicit bind
 
     let lambda = fun x -> x * 2         // explicit arguments
 
@@ -160,9 +164,9 @@ http://fsharp.org/
     [lang=fsharp]
     let x = 28                             // int
     let y = "hello"                        // string
-        
-    let add x y = x + y                    // ins inferred
+    let add x y = x + y                    // int inferred
     let addF = fun x y -> x + y            // same with lambda
+    let andThen f g = f >> g               // composed function
     let doItTwice f = f >> f               // composed function
 
 ==> [Hindley-Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system)
@@ -172,9 +176,9 @@ http://fsharp.org/
     [lang=scala]
     val x = 28                             // int
     val y = "hello"                        // string
-        
     def add (x:Int, y:Int) = x + y         // explicit types
     val addF: Function[Int,Int,Int] = _+_  // lambda
+    val addTwice = add5 _ andThen add6 _   // composed function
 
 ---
 
@@ -214,7 +218,7 @@ http://fsharp.org/
     let (_,group) = meetup                 // pattern matching
     let occurence = fst meetup             // extracting
     let f (occurence, group) = ()
-    let _ = f meetup                       // as function params
+    let call = f meetup                    // as function params
 
 ![scala](images/scala.png)
 
@@ -410,12 +414,12 @@ No Higher Kind Types!
 
 ### Summary
 
-|                     | F#                  | Scala               |
-| :------------------ | :-----------------: | :-----------------: |
-| **Paradigm**        | Functional-first    | Both OOP and FP     |
-| **FP features\***   | Native to platform  | Compiler level      |
-| **Syntax**          | Strict, concise     | Loose, verbose      |
-| **Scopes**          | Whitespace sensitive| Curly braces        |
+|                     | F#                          | Scala               |
+| :------------------ | :-----------------:         | :-----------------: |
+| **Paradigm**        | Functional-first            | Both OOP and FP     |
+| **FP features\***   | Native to platform, no HKT  | Compiler level      |
+| **Syntax**          | Strict, concise             | Loose, verbose      |
+| **Scopes**          | Whitespace sensitive        | Curly braces        |
 
 <small>
 * Functional features such as <a href=http://stackoverflow.com/a/31929/1397724">generics</a> or <a href="https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/">tail calls</a></small>
@@ -628,6 +632,7 @@ http://fsharp.org/testimonials/
 * [Suave.IO](https://suave.io/) - light-weight web server
 * [FsCheck](https://fscheck.github.io/FsCheck/) - library for property-based testing
 * [FParsec](http://www.quanttec.com/fparsec/) - parser combinator library
+* [Fable](https://fable-compiler.github.io/) - compiler to JavaScript (through Babel)
 * [FsReveal](http://fsprojects.github.io/FsReveal/) - slides in markdown / F# script
 
 ***
