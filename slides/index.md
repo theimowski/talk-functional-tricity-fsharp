@@ -499,6 +499,15 @@ http://data.worldbank.org/
 
         let sub x y = x - y
 
+---
+
+
+### One-pass compiler
+
+#### with top-down dependency order
+
+![dep_order_project.png](images/dep_order_project.png)
+
 [The "Dependency cycles" series](https://fsharpforfunandprofit.com/series/dependency-cycles.html) by Scott Wlaschin
 
 ---
@@ -522,6 +531,8 @@ http://data.worldbank.org/
         { x: float<'u>; y: float<'u>; z: float<'u> }
 
 Units of measure is a compile-time only feature
+
+==> Epic software bugs related to wrong unit arithmetics
 
 ***
 
@@ -635,6 +646,8 @@ http://fsharp.org/testimonials/
 * [Fable](https://fable-compiler.github.io/) - compiler to JavaScript (through Babel)
 * [FsReveal](http://fsprojects.github.io/FsReveal/) - slides in markdown / F# script
 
+==> Of course you can use any .NET project in F# 
+
 ***
 
-## Q&A
+## Summary, Questions
