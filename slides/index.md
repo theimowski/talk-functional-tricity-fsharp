@@ -66,8 +66,8 @@ http://fsharp.org/
 * OCaml - syntax
 * Haskell - functional
 * C# - .NET interop
-* **Scala** - FP on OOP platform
-* Python - syntactic sugars
+* Scala - FP on OOP platform
+* Python - syntax
 * Erlang - actor model
 
 ***
@@ -151,6 +151,7 @@ http://fsharp.org/
     [lang=scala]
     def add (x:Int, y:Int) = x + y
     val z = add(10,4)                   // function application
+    def addCurry (x:Int)(y:Int) = x + y // curried version
     val add5: (Int) => Int = add(5,_)   // underscore for currying
 
     val lambda: Function[Int,Int] = _*2 // implicit arguments
@@ -166,8 +167,8 @@ http://fsharp.org/
     let y = "hello"                        // string
     let add x y = x + y                    // int inferred
     let addF = fun x y -> x + y            // same with lambda
-    let andThen f g = f >> g               // composed function
     let doItTwice f = f >> f               // composed function
+    let andThen f g = f >> g               // composed function
 
 ==> [Hindley-Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system)
 
@@ -178,7 +179,7 @@ http://fsharp.org/
     val y = "hello"                        // string
     def add (x:Int, y:Int) = x + y         // explicit types
     val addF: Function[Int,Int,Int] = _+_  // lambda
-    val addTwice = add5 _ andThen add6 _   // composed function
+    val addTwice = add5 andThen add6       // composed function
 
 ---
 
@@ -412,7 +413,7 @@ No Higher Kind Types!
 
 ---
 
-### Summary
+### Difference summary
 
 |                     | F#                          | Scala               |
 | :------------------ | :-----------------:         | :-----------------: |
@@ -650,4 +651,13 @@ http://fsharp.org/testimonials/
 
 ***
 
-## Summary, Questions
+## Summary
+
+1. Brief history
+2. Basics - comparison with Scala
+3. Outstanding F# features
+4. Evolution of the language
+
+---
+
+## Questions
