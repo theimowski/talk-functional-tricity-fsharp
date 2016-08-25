@@ -80,6 +80,8 @@ http://fsharp.org/
 
 ---
 
+### Disclaimer: I don't know a thing about Scala
+
 * [F# for Scala developers](https://alfonsogarciacaro.github.io/fsharp-for-scala-developers) by Alfonso Garcia-Caro
 * [Comparing Scala to F#](http://mikhail.io/2016/08/comparing-scala-to-fsharp/) by Mikhail Shilkov
 * [How does Scala compare to F# as a functional language?](https://www.quora.com/How-does-Scala-compare-to-F-as-a-functional-language) - Quora.com
