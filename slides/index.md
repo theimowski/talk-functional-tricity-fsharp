@@ -344,6 +344,26 @@ http://fsharp.org/
     
 ---
 
+### Generics - map function
+
+![fsharp](images/fsharp.png)
+
+    [lang=fsharp]
+    let opt   = Option.map (add 5) (Some 28)
+    let list  = List.map   (add 5) [2;28] 
+    let async = Async.map  (add 5) (async { return 28 })
+
+![haskell](images/haskell.png)
+
+    [lang=haskell]
+    let maybe = fmap ((+) 5) (Just 5)
+    let list  = fmap ((+) 5) [2,28]
+    let io    = fmap ((+) 5) ((do return 5) :: IO Int) 
+
+==> There are no Higher Kind Types in F#
+
+---
+
 ### Computation Expressions
 
 ![fsharp](images/fsharp.png)
@@ -373,17 +393,23 @@ http://fsharp.org/
 ![fsharp](images/fsharp.png)
 
     [lang=fsharp]
+    let getQuote symbol = async { return 0.0 }
+    let isProfitable symbolA symbolB = true
+    let buy amount symbol = async { return () }
+
+    let usdQuote = getQuote "USD" 
+    let chfQuote = getQuote "CHF" 
+
     let purchase = 
         async {
             let! usd = usdQuote
             let! chf = chfQuote
-            if isProfitable(usd, chf) then
-               buy (1000, chf)
+            if isProfitable usd chf then
+               buy 1000 "CHF"
             else
                return ()
         }
 
-No Higher Kind Types!
 
 ---
 
@@ -423,7 +449,8 @@ No Higher Kind Types!
 | **Scopes**          | Whitespace sensitive        | Curly braces        |
 
 <small>
-* Functional features such as <a href=http://stackoverflow.com/a/31929/1397724">generics</a> or <a href="https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/">tail calls</a></small>
+* Functional features such as <a href=http://stackoverflow.com/a/31929/1397724">generics</a> or <a href="https://blogs.msdn.microsoft.com/fsharpteam/2011/07/08/tail-calls-in-f/">tail calls</a>
+</small>
 
 ![fs_vs_sc.png](images/fs_vs_sc.png)
 
@@ -533,7 +560,16 @@ http://data.worldbank.org/
 
 Units of measure is a compile-time only feature
 
-==> Epic software bugs related to wrong unit arithmetics
+---
+
+### Units of measue
+
+#### Epic software bugs related to units mismatch
+
+![units_mismatch.png](images/units_mismatch.png)
+
+https://www.laserfiche.com/simplicity/whats-worst-software-bug-history/
+
 
 ***
 
