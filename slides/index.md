@@ -698,4 +698,6 @@ http://fsharp.org/testimonials/
 
 ---
 
-## Questions
+## Questions?
+
+![questions](http://i.giphy.com/dXICCcws9oxxK.gif)
